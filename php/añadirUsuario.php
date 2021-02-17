@@ -1,11 +1,15 @@
 <?php include '../html/Head.html'?>
 <head>
-<link rel="stylesheet" href="../css/style.css">
+	<title>Añadir Usuario</title>
+	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div class="container padding25">
 	<form>
 	<div class="card mb-3">
+
+		<!-- Información personal -->
+
 		<div class="card-header text-white bg-secondary">Información personal</div>
 			<div class="card-body">
 			  <div class="form-row">
@@ -47,6 +51,8 @@
 			</div>
 		</div>
 
+		<!-- Datos de contacto -->
+
 		<div class="card mb-3">
 			<div class="card-header text-white bg-secondary">Datos de contacto</div>
 			<div class="card-body">
@@ -63,6 +69,8 @@
 			</div>
 		</div>
 
+		<!-- Dirección -->
+
 		<div class="card mb-3">
 			<div class="card-header text-white bg-secondary">Dirección</div>
 			<div class="card-body">
@@ -70,10 +78,6 @@
 			  	<div class="form-group col-md-6">
 			      <label for="inputDirecction">Dirección</label>
 			      <input type="text" class="form-control" id="inputDirecction">
-			    </div>
-			    <div class="form-group col-md-3">
-			      <label for="inputCity">Email</label>
-			      <input type="text" class="form-control" id="inputCity">
 			    </div>
 			    <div class="form-group col-md-3">
 			      <label for="InputCP">CP</label>
@@ -106,7 +110,7 @@
 				    <option value='laspalmas'>Las Palmas</option>
 				    <option value='granada'>Granada</option>
 				    <option value='guadalajara'>Guadalajara</option>
-				    <option value='guipuzcoa'>Guipúzcoa</option>
+				    <option value='guipuzcoa' selected>Guipúzcoa</option>
 				    <option value='huelva'>Huelva</option>
 				    <option value='huesca'>Huesca</option>
 				    <option value='illesbalears'>Illes Balears</option>
@@ -625,9 +629,11 @@
 			</div>
 		</div>
 
+		<!-- Trabajadora del hogar -->
+
 		<div class="card mb-3">
-			<div class="card-header text-white bg-secondary" onclick="ShowInterna()">Datos interna</div>
-			<div class="card-body" id="Interna">
+			<div class="card-header text-white bg-secondary" onclick="ShowTrabajadoraDelHogar()">Datos Trabajadora del Hogar</div>
+			<div class="card-body" id="TrabajadoraDelHogar">
 			  <div class="form-row">
 			  	<div class="form-group col-md-4">
 			      <label for="inputInternaMotiv">Motivo consulta</label>
@@ -696,8 +702,276 @@
 			    <label for="inputInternaHorario">Horario</label>
 			    <textarea class="form-control" id="inputInternaHorario" rows="3"></textarea>
 			  </div>
+			
+
+			<div class="form-row">
+				<div class="form-group col-md-4">
+			      <label for="inputInternaTotalHoras">Total horas semana</label>
+			      <input type="number" class="form-control" id="inputInternaTotalHoras">
+			    </div>
+			  	<div class="form-group col-md-4">
+			      <label for="inputLibraFestivos">Libra festivos</label>
+			      <select id="inputLibraFestivos" class="form-control">
+			        <option selected>Si</option>
+			        <option>No</option>
+			        <option>F</option>
+			      </select>
+			    </div>
+			   <div class="form-check form-check-inline">
+				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+				  <label class="form-check-label" for="defaultCheck1">
+				    No los libra pero los cobra
+				  </label>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-3">
+			      <label for="inputInternaSalario">Salario</label>
+			      <input type="number" class="form-control" id="inputInternaSalario">
+			    </div>
+				  <div class="form-group col-md-3">
+				      <label for="inputInternaPagas">Pagas</label>
+				      <input type="number" class="form-control" id="inputInternaPagas">
+				    </div>
+			   <div class="form-group col-md-3">
+			      <label for="inputInternaMetodoPago">Te pagan</label>
+			      <select id="inputInternaMetodoPago" class="form-control">
+			        <option selected>En mano</option>
+			        <option>Banco</option>
+			      </select>
+			    </div>
+			    <div class="form-group col-md-3">
+			      <label for="inputInternaNomina">Nomina</label>
+			      <select id="inputInternaNomina" class="form-control">
+			        <option selected>Si</option>
+			        <option>No</option>
+			      </select>
+			    </div>
+			</div>
+
+			<div class="form-row">
+			   <div class="form-group col-md-6">
+			      <label for="inputInternaVacaciones">Vacaciones</label>
+			      <select id="inputInternaVacaciones" class="form-control">
+			        <option selected>Si (descansa un mes) </option>
+			        <option>No y no las cobra aparte</option>
+			        <option>No y las cobra aparte</option>
+			      </select>
+			    </div>
+			    <div class="form-group col-md-6">
+			      <label for="inputInternaNomina">Tipo de trabajo</label>
+			      <select id="inputInternaNomina" class="form-control">
+			        <option selected>Cuidado de adultos como actividad principal</option>
+			        <option>Tareas domésticas sin cuidado</option>
+			        <option>Cuidado de adultos NO actividad principal</option>
+			        <option>Cuidado y número de criaturas</option>
+			      </select>
+			    </div>
+			</div>
 			</div>
 		</div>
+
+		<!-- Discriminación -->
+
+		<div class="card mb-3">
+			<div class="card-header text-white bg-secondary" onclick="ShowDiscriminación()">Discriminación</div>
+			<div class="card-body" id="Discriminacion">
+			  <div class="form-row">
+			  	<div class="form-group col-md-4">
+			      <label for="inputDSituacionDocumental">Situación Documental</label>
+			      <select id="inputDSituacionDocumental" class="form-control">
+			        <option selected>Nacionalidad Española </option>
+			        <option>NIE</option>
+			        <option>Irregular</option>
+			        <option>Nacional UE</option>
+			        <option>Demandante de asilo</option>
+			      </select>
+			    </div>
+			    <div class="form-group col-md-4">
+			      <label for="inputDSituacionResidencial">Situación Residencial</label>
+			      <select id="inputDSituacionResidencial" class="form-control">
+			        <option selected>Con domicilio</option>
+			        <option>Sin domicilio</option>
+			        <option>En acogida</option>
+			        <option>Otros</option>
+			      </select>
+			    </div>
+			     <div class="form-group col-md-4">
+			      <label for="inputDEstudios">Nivel de estudios</label>
+			      <select id="inputDEstudios" class="form-control">
+			        <option selected>Sin estudios</option>
+			        <option>Primaria</option>
+			        <option>Secunadria</option>
+			        <option>Bachiller</option>
+			        <option>Formación Profesional</option>
+			        <option>Universitarios</option>
+			        <option>Tercer Grado</option>
+			      </select>
+			    </div>
+			  </div>
+
+			  <div class="form-group">
+			    <label for="inputDRasgosFenotipicos">Color de piel / Etnia / Rasgos fenotípicos</label>
+			    <textarea class="form-control" id="inputInternaHorario" rows="2"></textarea>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="form-group col-md-12">
+			      <label for="inputDSituacionDocumental">Tipo</label>
+			      <select id="inputDSituacionDocumental" class="form-control" onchange="showTipo(this);">
+			        <option value="Conflicto" selected>Conflictos y agresiones racistas</option>
+			        <option value="DenegacionPrivada" >Denegación de acceso a prestaciones y servicios privados</option>
+			        <option value="DenegacionPublica" >Denegación de acceso a prestaciones y servicios públicos</option>
+			        <option value="Laboral" >Dicriminación laboral</option>
+			        <option value="ExtremaDerecha" >Extrema derecha y discurso del odio</option>
+			        <option value="Racismo">Racismo institucional</option>
+			        <option value="SeguridadPrivada" >Seguridad privada</option>
+			        <option value="SeguridadPublica" >Seguridad pública</option>
+			      </select>
+			    </div>
+			  </div>
+
+			  <!-- Conflictos y agresiones -->
+			  <div class="form-row" id="Conflictos">
+			  	<div class="form-group col-md-12">
+			  		<label for="inputDConflicto">Conflicto y Agresiones</label>
+			      <select id="inputDConflicto" class="form-control"  onchange="showConflictosOtros(this);">
+			        <option value="espacioPublico" selected>En el espacio público</option>
+			        <option value="vecinal">Conflictos vecinales</option>
+			        <option value="otro">Otros: indicar</option>
+			      </select>
+			    </div>
+			  </div>
+
+			  <div class="form-group" id="ConflictosOtro" style="display:none;">
+			    <label for="inputDConlictoOtros">Indicar Otros:</label>
+			    <textarea class="form-control" id="inputDConlictoOtros" rows="1"></textarea>
+			  </div>
+
+			  <!-- Denegación de acceso a prestaciones y servicios privados -->
+			  <div class="form-row" id="DenegacionPrivada" style="display:none;">
+			  	<div class="form-group col-md-12">
+			  		<label for="inputDDenegacionPrivada">Denegación de acceso a prestaciones y servicios privados</label>
+			      <select id="inputDDenegacionPrivada" class="form-control">
+			        <option selected>Bancos</option>
+			        <option>Locales de ocio y restuarantes</option>
+			        <option >Vivienda</option>
+			        <option>Otros</option>
+			      </select>
+			    </div>
+			  </div>
+
+
+ 			<!-- Denegación de acceso a prestaciones y servicios publicos -->
+			  <div class="form-row" id="DenegacionPublica" style="display:none;">
+			  	<div class="form-group col-md-12">
+			  		<label for="inputDDenegacionPublica">Denegación de acceso a prestaciones y servicios públicos</label>
+			      <select id="inputDDenegacionPublica" class="form-control">
+			        <option selected>Empleo</option>
+			        <option>Asistencia sanitaria</option>
+			        <option >Otras administraciones</option>
+			        <option>Empadronamiento</option>
+			        <option>Servicios sociales</option>
+			      </select>
+			    </div>
+			  </div>
+
+			  <!-- Racismo institucional -->
+			  <div class="form-row" id="RacismoInstitucional" style="display:none;">
+			  	<div class="form-group col-md-12">
+			  		<label for="inputDRacismoInstitucional">Racismo institucional</label>
+			      <select id="inputDRacismoInstitucional" class="form-control" onchange="showRacismoOtros(this);">
+			        <option value="cies" selected>CIES</option>
+			        <option value="nacionalidad">Nacionalidad</option>
+			        <option value="tramitesExtranjeria">Tramites extranjeria</option>
+			        <option value="otro">Otros: indicar después</option>
+			     </select>
+			    </div>
+			  </div>
+
+			  <div class="form-group" id="RacismoOtro" style="display:none;">
+			    <label for="inputDRacismoOtros">Indicar Otros:</label>
+			    <textarea class="form-control" id="inputDRacismoOtros" rows="1"></textarea>
+			  </div>
+
+			  <!--Agente discriminador-->
+
+			  <div class="form-row">
+			  	<div class="form-group col-md-4">
+			      <label for="inputDSituacionDocumental">Agente discriminador</label>
+			      <select id="inputDSituacionDocumental" class="form-control">
+			        <option selected>Entidad pública</option>
+			        <option>Entidad privada</option>
+			        <option>Particular</option>
+			        <option>Otros</option>
+			        
+			      </select>
+			    </div>
+			    <div class="form-group col-md-4">
+			      <label for="inputInternaComienzo">Fecha de los hechos</label>
+			      <input type="date" class="form-control" id="inputInternaComienzo">
+			    </div>
+			    
+			    <div class="form-group col-md-4">
+			      <label for="inputName">Municipio</label>
+			      <input type="text" class="form-control" id="inputName" placeholder="Nombre">
+			    </div>
+			  </div>
+
+			   <div class="form-group">
+			    <label for="inputDRasgosFenotipicos">Relato de los hechos</label>
+			    <textarea class="form-control" id="inputInternaHorario" rows="3"></textarea>
+			  </div>
+
+			  <div class="form-row">
+			  	 <div class="form-group col-md-4">
+			      <label for="inputName">Identificación del agente discriminador</label>
+			      <input type="text" class="form-control" id="inputName">
+			    </div>
+
+			     <div class="form-group col-md-4">
+			      <label for="inputName">Personas que pueden testificar</label>
+			      <input type="text" class="form-control" id="inputName">
+			    </div>
+			  	<div class="form-group col-md-4">
+			      <label for="inputDEstrategia">Estrategia a seguir</label>
+			      <select id="inputDEstrategia" class="form-control" onchange="showEstrategia(this);">
+			      	<option value="Asumir" selected>Asumimos</option>
+			        <option value="Derivar" >Derivamos</option>		        
+			      </select>
+			    </div>
+			  </div>
+
+			  <div class="form-row">
+			  <div class="form-group col-md-12" id="AsumimosCaso" >
+			      <label for="inputDAsumir">Asumimos caso</label>
+			      <select id="inputDAsumir" class="form-control">
+			        <option value="ViaPenal" selected >Via Penal</option>
+			        <option value="DefensorPueblo">Defensor del pueblo</option>	
+			        <option value="Denuncia">Denuncia pública</option>	
+			        <option value="NoDenuncia">No desea inponer denuncia</option>	
+			        <option value="Institucion">Institución causante</option>	
+			        <option value="Otras">Otras</option>			        
+			      </select>
+			    </div>
+			</div>
+
+			    <div class="form-group" id="DerivamosCaso" style="display:none;">
+			    <label for="inputDDerivar">Derivamos caso</label>
+			    <textarea class="form-control" id="inputDDerivar" rows="2"></textarea>
+			  </div>
+
+			   <div class="form-group">
+			    <label for="inputDRasgosFenotipicos">Otros elementos probatorios</label>
+			    <textarea class="form-control" id="inputInternaHorario" rows="2"></textarea>
+			  </div>
+
+
+			</div>
+
+		</div>
+
 			
 	<button type="submit" class="btn btn-primary">Añadir Usuario</button>
 	</form>
@@ -705,14 +979,77 @@
 </body>
 <script>
 document.getElementById("NavUsuarios").classList.add('active');
-document.getElementById("Interna").style.display="none";
+document.getElementById("TrabajadoraDelHogar").style.display="none";
+document.getElementById("Discriminacion").style.display="none";
 
-function ShowInterna() {
-  var x = document.getElementById("Interna");
+function ShowTrabajadoraDelHogar() {
+  var x = document.getElementById("TrabajadoraDelHogar");
   if (x.style.display === "none") {
     x.style.display = "block";
   } else {
     x.style.display = "none";
   }
 } 
+
+function ShowDiscriminación() {
+  var x = document.getElementById("Discriminacion");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function showEstrategia(t) {
+    if (t.value == "Asumir") {
+        document.getElementById("AsumimosCaso").style.display = "block";
+    } else {
+        document.getElementById("AsumimosCaso").style.display = "none";
+    }
+    if (t.value == "Derivar") {
+        document.getElementById("DerivamosCaso").style.display = "block";
+    } else {
+        document.getElementById("DerivamosCaso").style.display = "none";
+    }
+}
+
+
+function showTipo(t) {
+    if (t.value == "Conflicto") {
+        document.getElementById("Conflictos").style.display = "block";
+    } else {
+        document.getElementById("Conflictos").style.display = "none";
+    }
+    if (t.value == "DenegacionPrivada") {
+        document.getElementById("DenegacionPrivada").style.display = "block";
+    } else {
+        document.getElementById("DenegacionPrivada").style.display = "none";
+    }
+    if (t.value == "DenegacionPublica") {
+        document.getElementById("DenegacionPublica").style.display = "block";
+    } else {
+        document.getElementById("DenegacionPublica").style.display = "none";
+    }
+    if (t.value == "Racismo") {
+        document.getElementById("RacismoInstitucional").style.display = "block";
+    } else {
+        document.getElementById("RacismoInstitucional").style.display = "none";
+    }
+}
+
+function showConflictosOtros(t) {
+	if (t.value == "otro") {
+		document.getElementById("ConflictosOtro").style.display = "block";
+    } else {
+        document.getElementById("ConflictosOtro").style.display = "none";
+	}
+}
+
+function showRacismoOtros(t) {
+	if (t.value == "otro") {
+		document.getElementById("RacismoOtro").style.display = "block";
+    } else {
+        document.getElementById("RacismoOtro").style.display = "none";
+	}
+}
 </script>
