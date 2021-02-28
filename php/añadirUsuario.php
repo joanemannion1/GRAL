@@ -1,11 +1,14 @@
 <?php include '../html/Head.html'?>
+<?php
+  include 'session.php'
+?>
 <head>
 	<title>Añadir Usuario</title>
 	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div class="container padding25">
-	<form>
+	<form action="add_user.php" method="post">
 	<div class="card mb-3">
 
 		<!-- Información personal -->
@@ -15,21 +18,21 @@
 			  <div class="form-row">
 			    <div class="form-group col-md-4">
 			      <label for="inputName">Nombre</label>
-			      <input type="text" class="form-control" id="inputName" placeholder="Nombre">
+			      <input type="text" class="form-control" id="inputName" name="nombre" placeholder="Nombre">
 			    </div>
 			    <div class="form-group col-md-4">
 			      <label for="inputSurname">Apellido</label>
-			      <input type="text" class="form-control" id="inputSurname" placeholder="Apellido 1">
+			      <input type="text" class="form-control" id="inputSurname" name="apellido1" placeholder="Apellido 1">
 			    </div>
 			     <div class="form-group col-md-4">
 			      <label for="inputSurname2">Apellido 2</label>
-			      <input type="text" class="form-control" id="inputSurname2" placeholder="Apellido 2">
+			      <input type="text" class="form-control" id="inputSurname2" name="apellido2" placeholder="Apellido 2">
 			    </div>
 			  </div>
 			  <div class="form-row">
 			    <div class="form-group col-md-4">
 			      <label for="inputDocumentationType">Tipo Documentación</label>
-			      <select id="inputDocumentationType" class="form-control">
+			      <select id="inputDocumentationType" class="form-control" name="tipodoc">
 			        <option selected>DNI</option>
 			        <option>NIE</option>
 			        <option>Pasaporte</option>
@@ -37,11 +40,11 @@
 			    </div>
 			    <div class="form-group col-md-4">
 			      <label for="inputDocumentation">Nº Documentación</label>
-			      <input type="text" class="form-control" id="inputDocumentation">
+			      <input type="text" class="form-control" id="inputDocumentation" name="ndoc">
 			    </div>
 			    <div class="form-group col-md-4">
 			      <label for="inputGender">Género</label>
-			      <select id="inputGender" class="form-control">
+			      <select id="inputGender" class="form-control" name="genero">
 			        <option selected>Mujer</option>
 			        <option>Hombre</option>
 			        <option>Otro</option>
@@ -59,11 +62,11 @@
 			  <div class="form-row">
 			  	<div class="form-group col-md-8">
 			      <label for="inputEmail">Email</label>
-			      <input type="email" class="form-control" id="inputEmail" placeholder="email@example.com">
+			      <input type="email" class="form-control" id="inputEmail" name="email" placeholder="email@example.com">
 			    </div>
 			    <div class="form-group col-md-4">
 			      <label for="inputTelephone">Teléfono</label>
-			      <input type="tel" class="form-control" id="inputTelephone">
+			      <input type="tel" class="form-control" id="inputTelephone" name="telefono">
 			    </div>
 			  </div>
 			</div>
@@ -77,18 +80,22 @@
 			  <div class="form-row">
 			  	<div class="form-group col-md-6">
 			      <label for="inputDirecction">Dirección</label>
-			      <input type="text" class="form-control" id="inputDirecction">
+			      <input type="text" class="form-control" id="inputDirecction" name="direccion">
 			    </div>
 			    <div class="form-group col-md-3">
 			      <label for="InputCP">CP</label>
-			      <input type="postal-code" class="form-control" id="InputCP">
+			      <input type="postal-code" class="form-control" id="InputCP" name="cp">
+			    </div>
+			    <div class="form-group col-md-3">
+			      <label for="InputMunicipio">Municipio</label>
+			      <input type="text" class="form-control" id="InputMunicipio" name="municipio">
 			    </div>
 			  </div>
 
 			  <div class="form-row">
 			  	 <div class="form-group col-md-4">
 			      <label for="inputProvincia">Provincia</label>
-			      <select id="inputProvincia"class="form-control">
+			      <select id="inputProvincia"class="form-control" name="provincia">
 			      	<option value='alava'>Álava</option>
 				    <option value='albacete'>Albacete</option>
 				    <option value='alicante'>Alicante/Alacant</option>
@@ -146,7 +153,7 @@
 
 			  	<div class="form-group col-md-4">
 			      <label for="inputCountry">País</label>
-			      <select id="inputCountry" class="form-control">
+			      <select id="inputCountry" class="form-control" name="pais">
 			      		<option>OTRO</option>
 			         	<option value="AF">Afganistán</option>
 						<option value="AL">Albania</option>
@@ -387,7 +394,7 @@
 
 			    <div class="form-group col-md-4">
 			      <label for="inputNationality">Nacionalidad</label>
-			      <select id="inputNationality" class="form-control">
+			      <select id="inputNationality" class="form-control" name="nacionalidad">
 			      		<option>OTRO</option>
 			         	<option value="AF">Afganistán</option>
 						<option value="AL">Albania</option>
@@ -632,7 +639,7 @@
 		<!-- Trabajadora del hogar -->
 
 		<div class="card mb-3">
-			<div class="card-header text-white bg-secondary" onclick="ShowTrabajadoraDelHogar()">Datos Trabajadora del Hogar</div>
+			<div class="card-header text-white bg-secondary" onclick="showDiv('TrabajadoraDelHogar')">Datos Trabajadora del Hogar</div>
 			<div class="card-body" id="TrabajadoraDelHogar">
 			  <div class="form-row">
 			  	<div class="form-group col-md-4">
@@ -775,7 +782,7 @@
 		<!-- Discriminación -->
 
 		<div class="card mb-3">
-			<div class="card-header text-white bg-secondary" onclick="ShowDiscriminación()">Discriminación</div>
+			<div class="card-header text-white bg-secondary" onclick="showDiv('Discriminación')">Discriminación</div>
 			<div class="card-body" id="Discriminacion">
 			  <div class="form-row">
 			  	<div class="form-group col-md-4">
@@ -972,34 +979,603 @@
 
 		</div>
 
+		<!-- Extranjería -->
+		<div class="card mb-3">
+			<div class="card-header text-white bg-secondary" onclick="showDiv('extranjeria')">Datos Extranjería</div>
+			<div class="card-body" id="extranjeria">
 			
-	<button type="submit" class="btn btn-primary">Añadir Usuario</button>
-	</form>
+			<div class="form-group">
+			<label for="proyectosDeIntervención">Proyectos de la intervención</label>
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="aholkuSarea" name="Checkbox[]">
+				    	<label class="form-check-label">Aholku-sarea</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="convenioAnual" name="Checkbox[]">
+				    	<label class="form-check-label">Convenio anual diputación Guipúzcoa</label>
+				  </div>
+				</div>
+			  </div>
+
+			   <div class="form-row">
+				  <div class="col-sm-6">
+ 					<div class="form-check">
+					  	<input class="form-check-input" type="checkbox" value="servicioHabitual" name="Checkbox[]">
+				    	<label class="form-check-label">Servicio habitual de Sos Racismo</label>
+				  </div>
+				  </div>
+				  <div class="col-sm-6">
+				    <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="berdin" name="Checkbox[]">
+				    	<label class="form-check-label">Berdin</label>
+				  </div>
+				  </div>
+			  </div>
+
+			    <div class="form-row">
+				  <div class="col-sm-6">
+				  	<div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="primeraAtencion" name="Checkbox[]">
+				    	<label class="form-check-label">
+				    Primera atención y derivación de población inmigrante - DGM (MEYSS)</label>
+				  </div>
+				  </div>
+				  <div class="col-sm-6">
+				  	<div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="trabajadoraHogar" name="Checkbox[]">
+				    	<label class="form-check-label">Trabajadoras de hogar</label>
+				  </div>
+				  </div>
+			  </div>
+
+			  <div class="form-row">
+				  <div class="col-sm-6">
+				  	<div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="harrera" name="Checkbox[]">
+				    	<label class="form-check-label">Harrera</label>
+				  </div>
+				  </div>
+			</div>
+			</div>
+
+			<div class="form-group">
+			<label for="necesidadesDeMiEntidad">Necesidades de mi entidad</label>
+			</div>
+
+			<!-- Ayudas sociales -->
+			<div class="form-group">
+			<div class="p-2 mb-2 bg-secondary text-white" onclick="showDiv('ayudasSociales')">Ayudas Sociales</div>
+				<div id="ayudasSociales">
+				<div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="ayudasSociales" name="Checkbox[]">
+				    	<label class="form-check-label">Ayudas sociales</label>
+				  </div>
+				</div>
+			  </div>
+			  </div>			
+			</div>
+
+			<!-- Extranjeria -->
+			<div class="p-2 mb-2 bg-secondary text-white" onclick="showDiv('extranjeriaIntervencion')">Extranjería</div>
+			<div id="extranjeriaIntervencion">
+				<div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="extranjeria" name="Checkbox[]">
+				    	<label class="form-check-label">Extranjería</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="ARCEsocialContrato" name="Checkbox[]">
+				    	<label class="form-check-label">ARCE arraigo social con contrato</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="ARCElaboral" name="Checkbox[]">
+				    	<label class="form-check-label">ARCE arraigo laboral</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="ARCEfamiliarAscendente" name="Checkbox[]">
+				    	<label class="form-check-label">ARCE arraigo familiar por ascendiente</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="familiarComunitario" name="Checkbox[]">
+				    	<label class="form-check-label">Familiar de comunitario</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="ARTTinicialReagrupacion" name="Checkbox[]">
+				    	<label class="form-check-label">ARTT inicial reagrupación familiar</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="renovacionc_a" name="Checkbox[]">
+				    	<label class="form-check-label">Renovación c/a</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="ARCEsocialSinContrato" name="Checkbox[]">
+				    	<label class="form-check-label">ARCE arraigo social sin contrato</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="ARCEfamiliarDescendiente" name="Checkbox[]">
+				    	<label class="form-check-label">ARCE arraigo social por descendiente</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="ARCEotras" name="Checkbox[]">
+				    	<label class="form-check-label">ARCE otras</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="ARCEhumanitarias" name="Checkbox[]">
+				    	<label class="form-check-label">ARCE razones humanitarias</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="ARCEviolenciaGenero" name="Checkbox[]">
+				    	<label class="form-check-label">ARCE violencia de género</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="ARTTindependiente" name="Checkbox[]">
+				    	<label class="form-check-label">ARTT independiente familiares reagrupados</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="ARTTinicialExencion" name="Checkbox[]">
+				    	<label class="form-check-label">ARTT inicial exención situación nacional empleo</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="ARTTinicialOtras" name="Checkbox[]">
+				    	<label class="form-check-label">ARTT inicial otras</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="CancelacionAntecedentes" name="Checkbox[]">
+				    	<label class="form-check-label">Cancelación antecedentes penales</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="cedulaInscripcion" name="Checkbox[]">
+				    	<label class="form-check-label">Cedula de inscripción</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="entradaOtros" name="Checkbox[]">
+				    	<label class="form-check-label">Entrada OTROS</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="EstanciaEstudiosInicial" name="Checkbox[]">
+				    	<label class="form-check-label">Estancia por estudios inicial</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="EstanciaEstudiosProrroga" name="Checkbox[]">
+				    	<label class="form-check-label">Estancia por estudios prorroga</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="EstanciaCartaInvitacion" name="Checkbox[]">
+				    	<label class="form-check-label">Estancia-Carta de invitación</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="informacionInformesVivienda" name="Checkbox[]">
+				    	<label class="form-check-label">Información sobre informes de arraigo-vivienda</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="MatrimonioPoderes" name="Checkbox[]">
+				    	<label class="form-check-label">Matrimonio por poderes</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="MENAARmayoriaEdad" name="Checkbox[]">
+				    	<label class="form-check-label">MENA AR paso mayoría de edad</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="MENAARreconocimientoExtemporaneo" name="Checkbox[]">
+				    	<label class="form-check-label">MENA AR reconocimiento extemporaneo</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="menoresEspaña" name="Checkbox[]">
+				    	<label class="form-check-label">MENORES nacidos en España</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="MenoresNoEspaña" name="Checkbox[]">
+				    	<label class="form-check-label">MENORES no nacidos en España</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="MenoresOtros" name="Checkbox[]">
+				    	<label class="form-check-label">MENORES otros</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="modificacionARCEaARTT" name="Checkbox[]">
+				    	<label class="form-check-label">Modificación ARCE a ARTT</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="modificacionEstanciaEstudiosARTT" name="Checkbox[]">
+				    	<label class="form-check-label">Modificación estancia por estudios a ARTT</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="modificacionTarjetaFamiliar" name="Checkbox[]">
+				    	<label class="form-check-label">Modificación Tarjeta Familiar Residente UE a ARTT</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="modificacionTodas" name="Checkbox[]">
+				    	<label class="form-check-label">Modificación TODAS</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="nacionalidadDoble" name="Checkbox[]">
+				    	<label class="form-check-label">Nacionalidad doble</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="nacionalidadOtros" name="Checkbox[]">
+				    	<label class="form-check-label">Nacionalidad OTROS</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="nacionalidadResidencia" name="Checkbox[]">
+				    	<label class="form-check-label">Nacionalidad por residencia</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="otros" name="Checkbox[]">
+				    	<label class="form-check-label">OTROS</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="renovacionARTnoLucrativa" name="Checkbox[]">
+				    	<label class="form-check-label">Renovacíon ART no lucrativa</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="renovacionARTreagrupacionFamiliar" name="Checkbox[]">
+				    	<label class="form-check-label">Renovacion ART por reagrupación familiar</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="renovacionARTTc_a" name="Checkbox[]">
+				    	<label class="form-check-label">Renovación ARTT c/a</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="renovacionARTTc_p" name="Checkbox[]">
+				    	<label class="form-check-label">Renovación ARTT c_p</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="residenciaLargaDuracion" name="Checkbox[]">
+				    	<label class="form-check-label">Residencia de larga duración</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="residenciaLargaDuracionUE" name="Checkbox[]">
+				    	<label class="form-check-label">Residencia de larga duración UE</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="SalidaAutorizacionRegreso" name="Checkbox[]">
+				    	<label class="form-check-label">Salida con autorización de regreso</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="SalidaRetornoVoluntario" name="Checkbox[]">
+				    	<label class="form-check-label">Salida con retorno voluntario</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="ARCElaboral" name="Checkbox[]">
+				    	<label class="form-check-label">ARCE arraigo laboral</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="salidaOtros" name="Checkbox[]">
+				    	<label class="form-check-label">Salida OTROS</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="UEfamiliares" name="Checkbox[]">
+				    	<label class="form-check-label">UE familiares</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="UEresidentes" name="Checkbox[]">
+				    	<label class="form-check-label">UE residentes</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="UErumanos" name="Checkbox[]">
+				    	<label class="form-check-label">UE rumanos</label>
+				  </div>
+				</div>
+				<div class="col-sm-6"></div>
+			  </div>
+			</div>
+
+			<!-- Discriminación -->
+			<div class="form-group">
+			<div class="p-2 mb-2 bg-secondary text-white" onclick="showDiv('discriminacionIntervencion')">Discriminación</div>
+				<div id="discriminacionIntervencion">
+				<div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="discriminacion" name="Checkbox[]">
+				    	<label class="form-check-label">Dicriminación</label>
+				  </div>
+				</div>
+			  </div>
+			  </div>			
+			</div>
+
+			<!-- Asistencia laboral -->
+			<div class="form-group">
+			<div class="p-2 mb-2 bg-secondary text-white" onclick="showDiv('asistenciaLaboral')">Asistencia laboral</div>
+				<div id="asistenciaLaboral">
+				<div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="asistenciaLaboral" name="Checkbox[]">
+				    	<label class="form-check-label">Asistencia Laboral</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="finiquitos" name="Checkbox[]">
+				    	<label class="form-check-label">Finiquitos</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="informacionDerechosLaborales" name="Checkbox[]">
+				    	<label class="form-check-label">Información derechos laborales</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="actoConciliacion" name="Checkbox[]">
+				    	<label class="form-check-label">Acto de conciliacion</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="seguimientoDemandaLaboral" name="Checkbox[]">
+				    	<label class="form-check-label">Seguimiento demanda laboral</label>
+				  </div>
+				</div>
+				<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="agresionLaboral" name="Checkbox[]">
+				    	<label class="form-check-label">Agresión/Discriminación entorno laboral</label>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="cajaResistencia" name="Checkbox[]">
+				    	<label class="form-check-label">Caja resistencia / Apoyo economico</label>
+				  </div>
+				</div>
+			  </div>
+
+			  </div>			
+			</div>
+
+			<!-- Asesoramiento ( orientación) -->
+			<div class="form-group">
+			<div class="p-2 mb-2 bg-secondary text-white"  onclick="showDiv('asesoramiento')">Asesoramiento / Orientación</div>
+				<div id="asesoramiento">
+				<div class="form-row">
+			  	<div class="col-sm-6">
+				   <div class="form-check">
+				  		<input class="form-check-input" type="checkbox" value="asesoramiento" name="Checkbox[]">
+				    	<label class="form-check-label">Asesoramiento / Orientación</label>
+				  </div>
+				</div>
+			  </div>
+			  </div>			
+			</div>
+
+			</div>
+		</div>
+
+			
+	<button type="button" name="submit" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">Añadir Usuario</button>
+	
+
+<!-- Modal : confirmación -->
+<div class="modal" tabindex="-1" role="dialog" id="confirmationModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmación</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Estas seguro de que quieres añadir un usuario?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-secondary" name="guardar">Guradar y salir</button>
+        <button type="submit" class="btn btn-secondary" name="intervencion">Guardar y añadir intervención</button>
+      </div>
+    </div>
+  </div>
+
+</form>
 </div>
 </body>
 <script>
 document.getElementById("NavUsuarios").classList.add('active');
 document.getElementById("TrabajadoraDelHogar").style.display="none";
 document.getElementById("Discriminacion").style.display="none";
+document.getElementById("extranjeria").style.display="none";
+document.getElementById("ayudasSociales").style.display="none";
+document.getElementById("extranjeriaIntervencion").style.display="none";
+document.getElementById("discriminacionIntervencion").style.display="none";
+document.getElementById("asesoramiento").style.display="none";
+document.getElementById("asistenciaLaboral").style.display="none";
 
-function ShowTrabajadoraDelHogar() {
-  var x = document.getElementById("TrabajadoraDelHogar");
+function showDiv(class_name) {
+  var x = document.getElementById(class_name);
   if (x.style.display === "none") {
     x.style.display = "block";
   } else {
     x.style.display = "none";
   }
 } 
-
-function ShowDiscriminación() {
-  var x = document.getElementById("Discriminacion");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-
 function showEstrategia(t) {
     if (t.value == "Asumir") {
         document.getElementById("AsumimosCaso").style.display = "block";
@@ -1052,4 +1628,10 @@ function showRacismoOtros(t) {
         document.getElementById("RacismoOtro").style.display = "none";
 	}
 }
+
 </script>
+
+<?php
+
+
+?>
