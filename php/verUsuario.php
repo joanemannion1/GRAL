@@ -11,111 +11,9 @@
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 
-	<link rel="stylesheet" href="../css/style.css">
+	<link href="../css/style.css" rel="stylesheet" type="text/css"/>
 
-	<style>
-		#viewUserBody{
-			font-family: 'Poppins', sans-serif;
-			background: #fafafa;
-		}
-		#viewUserP{
-			font-family: 'Poppins', sans-serif;
-			font-size: 1.1em;
-			font-weight: 300;
-			line-height: 1.7em;
-			color: #999;
-		}
-		#viewUserA,
-		#viewUserA:hover,
-		#viewUserA:focus{
-			color: inherit;
-			text-decoration: none;
-			transition: all 0.3s;
-		}
-
-		/* Side Bar*/
-
-
-
-		#sidebar.active {
-		    margin-left: -250px;
-		}
-		.wrapper{
-			display: flex;
-			text-decoration: none;
-			transition: all 0.3s;
-		}
-
-		#sidebar{
-			min-width: 250px;
-			max-width: 250px;
-			background: #7386D5;
-			color: #fff;
-			transition: all 0.3s;
-		}
-
-
-		#sidebar .sidebar-header{
-			padding: 20px;
-			background: #6d7fcc;
-		}
-		#sidebar ul.components{
-			padding: 20px 0;
-			border-bottom: 1px solid #47748b;
-		}
-
-		#sidebar ul p{
-			color: #fff;
-			padding: 10px;
-		}
-
-		#sidebar ul li a{
-			padding: 10px;
-			font-size: 1.1em;
-			display: block;
-		}
-
-		#sidebar ul li a:hover{
-			color: #7386D5;
-			background: #fff;
-		}
-		#sidebar ul li.active>a,
-		#viewUserA[aria-expanded="true"] {
-			color: #fff;
-			background: #6d7fcc;
-		}
-
-		#viewUserA[data-toggle="collapse"]{
-			position: relative;
-		}
-
-		#viewUserUl #viewUserUl #viewUserA{
-			font-size: 0.9em !important;
-			padding-left: 30px !important;
-			background: #6d7fcc;
-		}
-
-		#content{
-			width: 100%;
-			padding: 20px;
-			min-height: 100vh;
-			transition: all 0.3s;
-		}
-
-
-		@media (max-width: 768px) {
-		    #sidebar {
-		        margin-left: -250px;
-		    }
-		    #sidebar.active {
-		        margin-left: 0;
-		    }
-		    #sidebarCollapse span {
-		        display: none;
-		    }
-		}
-			</style>
-	
+		
 </head>
 
 <body id="viewUserBody">
@@ -396,17 +294,10 @@ function showUsers(data) {
 		td3.innerHTML += "<br>"
 		td3.appendChild(telefono);
 
-		tr.onclick = function() {
-			$('#userModal').modal();
-			$('#userModal').find('.modal-title').text(rowData.nombre_completo);
-			$('#userModal').find('#modal-email').text(rowData.email);
-			$('#userModal').find('#modal-telefono').text(rowData.telefono);
-		}
-
 		tr.appendChild(num);
 		tr.appendChild(td2);
 		tr.appendChild(td3);
-		tr.innerHTML += "<td><button type='button' class='btn btn-outline-info btn-circle btn-lg btn-circle ml-2'><i class='bi bi-plus-circle'></i> </button><button type='button' class='btn btn-outline-info btn-circle btn-lg btn-circle ml-2'><i class='fa fa-edit'></i> </button></td>";
+		tr.innerHTML += "<td><button type='button' class='btn btn-outline-info btn-circle btn-lg btn-circle ml-2'><i class='bi bi-plus-circle'></i> </button><button type='button' class='btn btn-outline-info btn-circle btn-lg btn-circle ml-2' onclick='goToEdit(&apos;" + rowData.n_documentacion  + "&apos;);'><i class='fa fa-edit'></i> </button></td>";
 
 		resultContainer.appendChild(tr);
 	}	
@@ -416,6 +307,11 @@ function showUsers(data) {
 	}
 
 	loadedUsers  = len;
+}
+
+function goToEdit(n_documentacion) {
+	 window.location = 'añadirUsuario.php?n_documentacion=' + n_documentacion;
+
 }
 
 function clearResult() {

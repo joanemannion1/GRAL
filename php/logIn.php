@@ -45,9 +45,6 @@ if(isset($_POST['submitButton'])){
       $result = $conn->query($sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
-      echo $row['email'];
-      echo $row['contraseña'];
-
     if($row['email']==$email && $row['contraseña']==$contraseña) {
       // Guardo en la sesión el email del usuario.
       $_SESSION['email'] = $email;

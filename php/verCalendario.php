@@ -96,9 +96,9 @@
                             <label for="usuario">Usuario</label>
                             <input type="text" class="form-control" id="usuario">
                           </div>
-                          <!-- TO DO MENSAJE CONFIRMACION -->
-                          <div class="form-group col-md-4" style="display:none;">
-                            <label for="inputInternaComienzo">MENSAJE CONFIRMACION</label>
+                          <div class="form-group col-md-8">
+                            <label for="mensajeConfirmacion"></label>
+                            <p id="mensajeConfirmacion"></p>
                           </div>
                         </div> 
                          <div class="form-row">
@@ -130,3 +130,65 @@
 
   </body>
 </html>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+
+$('document').ready(function(){
+ var usuario_state = false;
+ $('#usuario').on('blur', function(){
+  var usuario = $('#usuario').val();
+  if (usuario == '') {
+    return;
+  }
+  $.ajax({
+    url: 'comprobarUsuario.php',
+    type: 'post',
+    data: {
+      'usuario' : usuario,
+    },
+    success: function(response){
+      if (response == 'taken' ) {
+        $('#mensajeConfirmacion').text('El usuario es correcto');
+        $('#mensajeConfirmacion').css('color', '#556B2F');
+      }else if (response == 'not_taken') {
+       $('#mensajeConfirmacion').text('El usuario es incorrecto');
+       $('#mensajeConfirmacion').css('color', '#8B0000');
+      }
+    }
+  });
+ });
+
+
+ $('#reg_btn').on('click', function(){
+  var usuario = $('#usuario').val();
+  var email = $('#email').val();
+  var password = $('#password').val();
+  if (usuario_state == false || email_state == false) {
+    $('#error_msg').text('Fix the errors in the form first');
+  }else{
+      // proceed with form submission
+      $.ajax({
+        url: 'register.php',
+        type: 'post',
+        data: {
+          'save' : 1,
+          'email' : email,
+          'usuario' : usuario,
+          'password' : password,
+        },
+        success: function(response){
+          alert('user saved');
+          $('#usuario').val('');
+          $('#email').val('');
+          $('#password').val('');
+        }
+      });
+  }
+ });
+});
+</script>

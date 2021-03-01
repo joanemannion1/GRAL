@@ -10,8 +10,12 @@
   	<?php include 'db_connect.php' ?>
     <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
         /* ---- Información personal -----*/
-      	$nombre_completo = $_POST['nombre']." ".$_POST['apellido1']." ".$_POST['apellido2'];
+      	$nombre = $_POST['nombre'];
+        $apellido1 = $_POST['apellido1'];
+        $apellido2 = $_POST['apellido2'];
+        $nombre_completo = $_POST['nombre'] . " " .$_POST['apellido1'] . " " . $_POST['apellido2'];
         $tipo_documentacion = $_POST['tipodoc'];
         $n_documentacion = $_POST['ndoc'];
         $genero = $_POST['genero'];
@@ -29,7 +33,7 @@
         $nacionalidad = $_POST['nacionalidad'];
 
 
-        if(empty($nombre_completo) || empty($tipo_documentacion) || empty($n_documentacion) || empty($telefono)){
+        if(empty($nombre) || empty($apellido1) || empty($tipo_documentacion) || empty($n_documentacion) || empty($telefono)){
           echo "<script> alert('No puede haber opciones vacias');
                          window.history.back(); 
 
@@ -37,7 +41,7 @@
           exit;
         }
 
-        $sql = "INSERT INTO usuarios (nombre_completo, tipo_documentacion, n_documentacion, genero, email, telefono, direccion, cp, municipio, provincia, pais, nacionalidad) VALUES ('$nombre_completo', '$tipo_documentacion', '$n_documentacion', '$genero', '$email', '$telefono', '$direccion', '$cp', '$municipio', '$provincia', '$pais', '$nacionalidad')";
+        $sql = "INSERT INTO usuarios (nombre_completo, nombre, apellido1, apellido2, tipo_documentacion, n_documentacion, genero, email, telefono, direccion, cp, municipio, provincia, pais, nacionalidad) VALUES ('$nombre_completo', $nombre', '$apellido1', '$apellido2', '$tipo_documentacion', '$n_documentacion', '$genero', '$email', '$telefono', '$direccion', '$cp', '$municipio', '$provincia', '$pais', '$nacionalidad')";
 
         if (mysqli_query($conn, $sql)) {
           if(isset($_POST["guardar"])) {

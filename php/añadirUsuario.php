@@ -6,6 +6,33 @@
 	<title>Añadir Usuario</title>
 	<link rel="stylesheet" href="../css/style.css">
 </head>
+<?php
+ $nombre = "";
+ $apellido1 = "";
+ $apellido2 = "";
+ $t_documentacion = "";
+ $n_documentacion = "";
+ $email = "";
+ $telefono = "";
+ include 'db_connect.php';
+ if(isset($_GET['n_documentacion'])) {
+ 	$usuario = $_GET['n_documentacion'];
+  	$sql = "SELECT * FROM usuarios WHERE n_documentacion='$usuario'";
+  	$result = mysqli_query($conn, $sql);
+  	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+    $nombre = $row['nombre'];
+    $apellido1 = $row['apellido1'];
+    $apellido2 = $row['apellido2'];
+    $t_documentacion = $row['tipo_documentacion'];
+    $n_documentacion = $row['n_documentacion'];
+    $email = $row['email'];
+    $telefono = $row['telefono'];
+ }
+
+?>
+
+
 <body>
 <div class="container padding25">
 	<form action="add_user.php" method="post">
@@ -18,15 +45,15 @@
 			  <div class="form-row">
 			    <div class="form-group col-md-4">
 			      <label for="inputName">Nombre</label>
-			      <input type="text" class="form-control" id="inputName" name="nombre" placeholder="Nombre">
+			      <input type="text" class="form-control" id="inputName" name="nombre" placeholder='Nombre'>
 			    </div>
 			    <div class="form-group col-md-4">
 			      <label for="inputSurname">Apellido</label>
-			      <input type="text" class="form-control" id="inputSurname" name="apellido1" placeholder="Apellido 1">
+			      <input type="text" class="form-control" id="inputSurname" name="apellido1" placeholder='Apellido'>
 			    </div>
 			     <div class="form-group col-md-4">
 			      <label for="inputSurname2">Apellido 2</label>
-			      <input type="text" class="form-control" id="inputSurname2" name="apellido2" placeholder="Apellido 2">
+			      <input type="text" class="form-control" id="inputSurname2" name="apellido2" placeholder='Apellido2'>
 			    </div>
 			  </div>
 			  <div class="form-row">
@@ -40,7 +67,7 @@
 			    </div>
 			    <div class="form-group col-md-4">
 			      <label for="inputDocumentation">Nº Documentación</label>
-			      <input type="text" class="form-control" id="inputDocumentation" name="ndoc">
+			      <input type="text" class="form-control" id="inputDocumentation" name="ndoc" placeholder='11223344J'>	
 			    </div>
 			    <div class="form-group col-md-4">
 			      <label for="inputGender">Género</label>
@@ -62,11 +89,11 @@
 			  <div class="form-row">
 			  	<div class="form-group col-md-8">
 			      <label for="inputEmail">Email</label>
-			      <input type="email" class="form-control" id="inputEmail" name="email" placeholder="email@example.com">
+			      <input type="email" class="form-control" id="inputEmail" name="email" placeholder='example@example.com'>
 			    </div>
 			    <div class="form-group col-md-4">
 			      <label for="inputTelephone">Teléfono</label>
-			      <input type="tel" class="form-control" id="inputTelephone" name="telefono">
+			      <input type="tel" class="form-control" id="inputTelephone" name="telefono" placeholder='666111222'>
 			    </div>
 			  </div>
 			</div>
@@ -782,7 +809,7 @@
 		<!-- Discriminación -->
 
 		<div class="card mb-3">
-			<div class="card-header text-white bg-secondary" onclick="showDiv('Discriminación')">Discriminación</div>
+			<div class="card-header text-white bg-secondary" onclick="showDiv('Discriminacion')">Discriminación</div>
 			<div class="card-body" id="Discriminacion">
 			  <div class="form-row">
 			  	<div class="form-group col-md-4">
@@ -1558,6 +1585,19 @@
 </div>
 </body>
 <script>
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const user = urlParams.get('n_documentacion');
+var x = 'APA';
+
+	document.getElementById("inputName").value = '<?php echo $nombre ?>';
+	document.getElementById("inputSurname").value = '<?php echo $apellido1 ?>';
+	document.getElementById("inputSurname2").value = '<?php echo $apellido2 ?>';
+	document.getElementById("inputDocumentationType").value = '<?php echo $t_documentacion ?>';
+	document.getElementById("inputDocumentation").value = '<?php echo $n_documentacion ?>';
+	document.getElementById("inputEmail").value = '<?php echo $email ?>';
+	document.getElementById("inputTelephone").value = '<?php echo $telefono ?>';
+
 document.getElementById("NavUsuarios").classList.add('active');
 document.getElementById("TrabajadoraDelHogar").style.display="none";
 document.getElementById("Discriminacion").style.display="none";
