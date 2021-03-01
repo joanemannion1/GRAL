@@ -19,7 +19,7 @@
 <body id="viewUserBody">
 <div class="wrapper">
 	
- <nav id="sidebar">
+ <nav id="sidebar" aria-label="MenuFiltos">
  	
  	 <div class="sidebar-header">
  	 	<h3>Filtrar</h3>
@@ -38,7 +38,7 @@
 					$result = mysqli_query($conn,"SELECT DISTINCT nacionalidad FROM usuarios");
 					while($row = mysqli_fetch_array($result))
 					{
-					echo "<input class='form-check-input' name='nacionalidad' type='checkbox' value=" .$row['nacionalidad']. " id='nacionalidad'><label class='form-check-label' for='nacionalidad'>" . $row['nacionalidad']. "</label><br>";
+					echo "<input class='form-check-input' name='nacionalidad' type='checkbox' value=" .$row['nacionalidad']. " id='nacionalidad'><label class='form-check-label' for='nacionalidad'>" . $row['nacionalidad']. "/><br>";
 					}
 					?>
 			      </select>
@@ -52,7 +52,6 @@
  	 			<div class="form-check">
 			      <h5>País</h5>
 			      <?php
-                  	include 'db_connect.php';
 					$result = mysqli_query($conn,"SELECT DISTINCT pais FROM usuarios");
 					while($row = mysqli_fetch_array($result))
 					{
@@ -69,7 +68,6 @@
  	 			<div class="form-check">
 			      <h5>Género</h5>
 			      <?php
-                  	include 'db_connect.php';
 					$result = mysqli_query($conn,"SELECT DISTINCT genero FROM usuarios");
 					while($row = mysqli_fetch_array($result))
 					{
@@ -87,7 +85,7 @@
 
 <div id="content">
 	
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="MenuBusqueda">
   	<div class="container-fluid">
   		<button type="button" id="sidebarCollapse" class="btn  btn-info">
   			<em class="fas fa-align-left"></em>

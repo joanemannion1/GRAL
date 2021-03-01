@@ -30,7 +30,7 @@ $value = $_SERVER['HTTP_REFERER'];
 if (ctype_alnum($value)) {
   header("X-Header: $value"); // Compliant
 } else {
-  echo 'Ha habido un error';M
+  echo 'Ha habido un error';
 }
 
 	

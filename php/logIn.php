@@ -21,12 +21,6 @@
       <label for="inputPassword" class="sr-only" >Contraseña</label>
         <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required>
 
-      <!-- TO DO Remember me -->
-
-  <!--     <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Recordarme
-      </div> -->
       <button type="submit" class="btn btn-lg btn-primary btn-block" name="submitButton">Iniciar</button>
     </form>
   </div>
@@ -36,7 +30,6 @@
 <?php
 
 if(isset($_POST['submitButton'])){
-      //$conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
 
       $email = $_POST['usuario'];
       $contraseña = $_POST['inputPassword'];

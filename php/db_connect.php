@@ -44,7 +44,7 @@ $db_users_create ="CREATE TABLE IF NOT EXISTS usuarios (
    	)  ENGINE=INNODB;";
 
 
-if (($conn->query($db_login_create) === FALSE) or ($conn->query($db_users_create) === FALSE)) {
+if (($conn->query($db_login_create) === FALSE) || ($conn->query($db_users_create) === FALSE)) {
   echo "Error creating table: " . $conn->error;
 }
 ?>

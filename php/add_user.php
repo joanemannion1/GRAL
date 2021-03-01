@@ -53,10 +53,10 @@
           }
         }
         else{
-          echo("Error description: " . mysqli_error($conn));
-          echo("<br><br>");
-          echo("<button onclick=\"window.history.back();\"> Saiatu berriro </button>");
-          echo("<br><br>");
+          echo"Error description: " . mysqli_error($conn);
+          echo"<br><br>";
+          echo"<button onclick=\"window.history.back();\"> Saiatu berriro </button>";
+          echo"<br><br>";
         }
       }
     
