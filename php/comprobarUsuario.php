@@ -25,7 +25,7 @@
   	  exit();
   	}else{
   	  $query = "INSERT INTO users (username, email, password) 
-  	       	VALUES ('$username', '$email', '".md5($password)."')";
+  	       	VALUES ('$username', '$email', '".SHA-3($password)."')";
   	  $results = mysqli_query($db, $query);
   	  echo 'Saved!';
   	  exit();
