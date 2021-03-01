@@ -25,7 +25,13 @@ if (isset($_POST['nombre']) && isset($_POST['usuario']) && isset($_POST['fecha']
 	}
 
 }
-header('Location: '.$_SERVER['HTTP_REFERER']);
+
+$value = $_SERVER['HTTP_REFERER'];
+if (ctype_alnum($value)) {
+  header("X-Header: $value"); // Compliant
+} else {
+  echo 'Ha habido un error';M
+}
 
 	
 ?>
