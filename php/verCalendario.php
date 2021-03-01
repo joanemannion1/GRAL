@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <?php include '../html/Head.html'?>
 <html lang='en'>
   <head>
@@ -11,6 +11,8 @@
 
     <link href='../fullcalendar/main.css' rel='stylesheet' />
     <script src='../fullcalendar/main.js'></script>
+
+    <title> Calendario </title>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -69,6 +71,7 @@
 
 
     </script>
+
   </head>
   <body>
     <div id='calendarbody'>    

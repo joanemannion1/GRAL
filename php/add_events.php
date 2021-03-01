@@ -12,7 +12,6 @@ if (isset($_POST['nombre']) && isset($_POST['usuario']) && isset($_POST['fecha']
 
 	$sql = "INSERT INTO events(title, usuario, date, description) values ('$title', '$usuario', '$date', '$description')";
 	
-	echo $sql;
 	
 	$query = $bdd->prepare( $sql );
 	if ($query == false) {

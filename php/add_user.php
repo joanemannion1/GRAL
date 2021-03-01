@@ -2,9 +2,10 @@
   session_start();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <?php include '../html/Head.html'?>
+  <title> Añadir usuario </title>
 </head>
 <body>
   	<?php include 'db_connect.php' ?>

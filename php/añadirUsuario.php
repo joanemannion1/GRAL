@@ -17,9 +17,14 @@
  include 'db_connect.php';
  if(isset($_GET['n_documentacion'])) {
  	$usuario = $_GET['n_documentacion'];
-  	$sql = "SELECT * FROM usuarios WHERE n_documentacion='$usuario'";
-  	$result = mysqli_query($conn, $sql);
-  	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+  	$sql = "SELECT * FROM usuarios WHERE n_documentacion= ?";
+  	$stmt = $conn->prepare($sql);
+
+  	$stmt->bind_param("s", $usuario);
+    $stmt->execute();
+
+  	$result = $stmt->get_result();
+	$row = $result->fetch_assoc();
 
     $nombre = $row['nombre'];
     $apellido1 = $row['apellido1'];

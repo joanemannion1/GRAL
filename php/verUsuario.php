@@ -90,7 +90,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   	<div class="container-fluid">
   		<button type="button" id="sidebarCollapse" class="btn  btn-info">
-  			<i class="fas fa-align-left"></i>
+  			<em class="fas fa-align-left"></em>
   			<span>Filtros</span>
   		</button>
   		<form class="form-inline">
@@ -110,7 +110,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table no-wrap user-table mb-0">
+                <table class="table no-wrap user-table mb-0" aria-label="tabla de usuarios">
                   <thead>
                     <tr>
                       <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
